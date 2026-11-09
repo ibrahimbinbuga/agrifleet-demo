@@ -489,9 +489,3 @@ web/dist/
 
 # macOS
 .DS_Store
-
-# Local only
-CLAUDE.md
-TASKS.md
-.claude/
-docs/INTERVIEW_NOTES.md
