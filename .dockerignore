@@ -1,9 +1,7 @@
 .git
 .github
-.claude
 .config
 docs
-scripts
 tests
 web
 **/bin
