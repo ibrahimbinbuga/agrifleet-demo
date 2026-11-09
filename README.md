@@ -16,6 +16,7 @@ Fleet management for agricultural spraying drones: live map, real-time telemetry
 - **Flight logs:** paged history, route replay on a map, battery and altitude charts.
 - **Maintenance planning:** due and overdue drones sorted by urgency, with rules based on flight time and calendar time.
 - **Service tickets:** create, filter and move through their lifecycle.
+- **Technician app:** a Flutter app for the field, with the fleet list, maintenance records and service tickets.
 
 | Drone detail | Flight replay |
 | --- | --- |
@@ -53,10 +54,22 @@ npm run dev --prefix web
 
 The Vite dev server runs on http://localhost:5173 and proxies `/api` and `/hubs` to the API.
 
+### Technician app
+
+Requires Flutter. With the backend running:
+
+```bash
+cd mobile
+flutter run
+```
+
+On an Android emulator, pass `--dart-define=API_BASE_URL=http://10.0.2.2:8080` so the app can reach the host machine.
+
 ### Tests
 
 ```bash
 dotnet test
+cd mobile && flutter test
 ```
 
 ## Architecture
@@ -89,13 +102,15 @@ flowchart LR
 | `src/AgriFleet.Api` | Controllers, SignalR hub, simulator and application startup. |
 | `tests/AgriFleet.Tests` | xUnit tests for the domain logic and validators. |
 | `web` | React dashboard. |
+| `mobile` | Flutter technician app using the same REST API. |
 
 ## Tech stack
 
 - **Backend:** .NET 8, ASP.NET Core Web API, EF Core 8 with Npgsql, SignalR, FluentValidation, Swagger, ProblemDetails
 - **Database:** PostgreSQL 16
 - **Frontend:** Vite, React 18, TypeScript (strict), react-leaflet, @microsoft/signalr, TanStack Query, React Router, Recharts, Tailwind CSS
-- **Tests:** xUnit, FluentAssertions
+- **Mobile:** Flutter, Material 3, http
+- **Tests:** xUnit, FluentAssertions, flutter_test
 - **Infrastructure:** Docker Compose, nginx, GitHub Actions
 
 ## API overview
@@ -177,6 +192,5 @@ A drone is due for service after **3000 flight minutes** or **90 days** since it
 ## Roadmap
 
 - Authentication and role-based access
-- Mobile technician app
 - MQTT ingestion for real drone telemetry
 - Geofencing
