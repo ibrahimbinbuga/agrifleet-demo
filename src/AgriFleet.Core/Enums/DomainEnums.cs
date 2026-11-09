@@ -11,3 +11,5 @@ public enum MaintenanceStatus { Ok, DueSoon, Overdue }
 public enum TicketPriority { Low, Medium, High, Critical }
 
 public enum TicketStatus { Open, InProgress, Resolved }
+
+public enum AlertSeverity { Info, Warning, Critical }

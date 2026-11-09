@@ -1,15 +1,17 @@
+using AgriFleet.Api.Hubs;
 using AgriFleet.Core.Dtos;
 using AgriFleet.Core.Entities;
 using AgriFleet.Core.Enums;
 using AgriFleet.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 
 namespace AgriFleet.Api.Controllers;
 
 [ApiController]
 [Route("api/drones")]
-public class DronesController(AgriFleetDbContext db) : ControllerBase
+public class DronesController(AgriFleetDbContext db, IHubContext<TelemetryHub, ITelemetryClient> hub) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<List<DroneDto>>> GetAll(CancellationToken ct)
@@ -65,6 +67,7 @@ public class DronesController(AgriFleetDbContext db) : ControllerBase
 
         drone.Status = request.Status;
         await db.SaveChangesAsync(ct);
+        await hub.Clients.All.DroneStatusChanged(new DroneStatusChangedDto(drone.Id, drone.Status));
 
         return DroneDto.From(drone, DateTime.UtcNow);
     }

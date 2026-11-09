@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 using AgriFleet.Api.Filters;
+using AgriFleet.Api.Hubs;
+using AgriFleet.Api.Simulator;
 using AgriFleet.Core.Validators;
 using AgriFleet.Infrastructure.Data;
 using FluentValidation;
@@ -20,6 +22,14 @@ builder.Services
     })
     .AddJsonOptions(options =>
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter(allowIntegerValues: false)));
+
+builder.Services
+    .AddSignalR()
+    .AddJsonProtocol(options =>
+        options.PayloadSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
+
+builder.Services.Configure<SimulatorOptions>(builder.Configuration.GetSection(SimulatorOptions.SectionName));
+builder.Services.AddHostedService<DroneSimulator>();
 
 builder.Services.AddValidatorsFromAssemblyContaining<CreateServiceTicketRequestValidator>();
 builder.Services.AddProblemDetails();
@@ -56,6 +66,7 @@ if (app.Environment.IsDevelopment())
 app.UseCors(WebCorsPolicy);
 
 app.MapControllers();
+app.MapHub<TelemetryHub>("/hubs/telemetry");
 app.MapHealthChecks("/health");
 
 app.Run();

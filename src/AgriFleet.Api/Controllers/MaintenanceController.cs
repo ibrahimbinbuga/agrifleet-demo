@@ -1,15 +1,17 @@
+using AgriFleet.Api.Hubs;
 using AgriFleet.Core.Dtos;
 using AgriFleet.Core.Entities;
 using AgriFleet.Core.Enums;
 using AgriFleet.Core.Services;
 using AgriFleet.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 
 namespace AgriFleet.Api.Controllers;
 
 [ApiController]
-public class MaintenanceController(AgriFleetDbContext db) : ControllerBase
+public class MaintenanceController(AgriFleetDbContext db, IHubContext<TelemetryHub, ITelemetryClient> hub) : ControllerBase
 {
     [HttpGet("api/maintenance/due")]
     public async Task<ActionResult<List<DroneDto>>> GetDue(CancellationToken ct)
@@ -70,6 +72,7 @@ public class MaintenanceController(AgriFleetDbContext db) : ControllerBase
 
         db.MaintenanceRecords.Add(record);
         await db.SaveChangesAsync(ct);
+        await hub.Clients.All.DroneStatusChanged(new DroneStatusChangedDto(drone.Id, drone.Status));
 
         var dto = new MaintenanceRecordDto(record.Id, record.DroneId, record.Type, record.Description, record.PerformedBy, record.PerformedAt, record.FlightMinutesAtService);
 

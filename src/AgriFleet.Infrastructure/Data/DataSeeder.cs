@@ -1,6 +1,7 @@
 using System.Text.Json;
 using AgriFleet.Core.Entities;
 using AgriFleet.Core.Enums;
+using AgriFleet.Core.Simulation;
 using Microsoft.EntityFrameworkCore;
 
 namespace AgriFleet.Infrastructure.Data;
@@ -11,7 +12,7 @@ public static class DataSeeder
     private const int FlightsWithTelemetry = 5;
     private const int TelemetryPointsPerFlight = 120;
     private const int SprayRows = 8;
-    private const double LitersPerHectare = 8;
+    private const double LitersPerHectare = FlightPhysics.LitersPerHectare;
 
     public static async Task SeedAsync(AgriFleetDbContext db, DateTime now, CancellationToken ct = default)
     {
