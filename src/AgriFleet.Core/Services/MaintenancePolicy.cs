@@ -31,4 +31,9 @@ public static class MaintenancePolicy
 
         return new(MaintenanceStatus.Ok, "Bakım gerekmiyor");
     }
+
+    /// <summary>Share of the closest limit already used; 1 or more means overdue.</summary>
+    public static double Urgency(Drone drone, DateTime now) => Math.Max(
+        drone.FlightMinutesSinceMaintenance / FlightMinutesLimit,
+        (now - drone.LastMaintenanceAt).TotalDays / DaysLimit);
 }
