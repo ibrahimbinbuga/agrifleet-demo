@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .data-table {
+    @apply w-full border-collapse text-sm;
+  }
+
+  .data-table th {
+    @apply whitespace-nowrap border-b border-ops-700 px-3 py-2 text-left text-[11px] font-medium uppercase tracking-wide text-ops-500;
+  }
+
+  .data-table td {
+    @apply border-b border-ops-800 px-3 py-2;
+  }
+
+  .data-table tbody tr:hover {
+    @apply bg-ops-850;
+  }
+
+  .form-control {
+    @apply w-full border border-ops-700 bg-ops-950 px-2 py-1.5 text-sm text-ops-100 focus:border-field-500 focus:outline-none;
+  }
+
+  .btn {
+    @apply bg-field-600 px-3 py-1.5 text-sm font-medium text-ops-950 hover:bg-field-500 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-quiet {
+    @apply border border-ops-700 px-2.5 py-1 text-xs text-ops-300 hover:text-ops-100 disabled:cursor-not-allowed disabled:opacity-40;
+  }
+
+  .table-link {
+    @apply font-mono text-field-400 hover:underline;
+  }
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-ops-950 font-sans text-ops-100 antialiased;
+}
+
+.leaflet-container {
+  background: theme('colors.ops.950');
+  font: inherit;
+}
+
+.leaflet-tile-pane {
+  filter: invert(1) hue-rotate(180deg) brightness(0.85) contrast(0.9) saturate(0.45);
+}
+
+.leaflet-tooltip.map-label {
+  @apply rounded-sm border-0 bg-ops-950/90 px-1.5 py-0.5 font-mono text-[11px] text-ops-100 shadow-none;
+}
+
+.leaflet-tooltip.map-label::before {
+  display: none;
+}
+
+.leaflet-control-attribution {
+  background: rgb(10 15 12 / 0.75) !important;
+  color: theme('colors.ops.500');
+}
+
+.leaflet-control-attribution a {
+  color: theme('colors.ops.300');
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+.toast-enter {
+  animation: toast-in 180ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast-enter {
+    animation: none;
+  }
+}
