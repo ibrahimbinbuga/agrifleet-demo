@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DD34A534-1E8A-4050-A2D8-868461B26BA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgriFleet.Api", "src\AgriFleet.Api\AgriFleet.Api.csproj", "{030B7F32-A87E-4B8A-A78E-D747321DA094}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgriFleet.Core", "src\AgriFleet.Core\AgriFleet.Core.csproj", "{A494C65A-2D6B-44D6-8F30-62C69113924B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgriFleet.Infrastructure", "src\AgriFleet.Infrastructure\AgriFleet.Infrastructure.csproj", "{AD1C4640-A95E-4E74-9B62-D80A316B387E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D82638D7-C39A-4BDA-A6D6-2ED239396C0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgriFleet.Tests", "tests\AgriFleet.Tests\AgriFleet.Tests.csproj", "{22C44F55-ED0C-4B4E-AAE9-B9D19841AACC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{030B7F32-A87E-4B8A-A78E-D747321DA094}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{030B7F32-A87E-4B8A-A78E-D747321DA094}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{030B7F32-A87E-4B8A-A78E-D747321DA094}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{030B7F32-A87E-4B8A-A78E-D747321DA094}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A494C65A-2D6B-44D6-8F30-62C69113924B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A494C65A-2D6B-44D6-8F30-62C69113924B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A494C65A-2D6B-44D6-8F30-62C69113924B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A494C65A-2D6B-44D6-8F30-62C69113924B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD1C4640-A95E-4E74-9B62-D80A316B387E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD1C4640-A95E-4E74-9B62-D80A316B387E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD1C4640-A95E-4E74-9B62-D80A316B387E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD1C4640-A95E-4E74-9B62-D80A316B387E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22C44F55-ED0C-4B4E-AAE9-B9D19841AACC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22C44F55-ED0C-4B4E-AAE9-B9D19841AACC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22C44F55-ED0C-4B4E-AAE9-B9D19841AACC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22C44F55-ED0C-4B4E-AAE9-B9D19841AACC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{030B7F32-A87E-4B8A-A78E-D747321DA094} = {DD34A534-1E8A-4050-A2D8-868461B26BA3}
+		{A494C65A-2D6B-44D6-8F30-62C69113924B} = {DD34A534-1E8A-4050-A2D8-868461B26BA3}
+		{AD1C4640-A95E-4E74-9B62-D80A316B387E} = {DD34A534-1E8A-4050-A2D8-868461B26BA3}
+		{22C44F55-ED0C-4B4E-AAE9-B9D19841AACC} = {D82638D7-C39A-4BDA-A6D6-2ED239396C0C}
+	EndGlobalSection
+EndGlobal
